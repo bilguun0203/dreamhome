@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 include_once "func_db.php";
 
 $dbhost = "localhost";
@@ -18,3 +20,9 @@ catch(PDOException $e)
 }
 
 $db = new func_db($conn);
+
+function dump($data){
+    $str = '<pre>' . var_export($data, true) . '</pre>';
+    echo $str;
+    return $str;
+}

@@ -83,7 +83,14 @@ if(isset($_POST['btn-save'])){
             </div>
             <div class="col-md-6">
                 <label for="branchNo" class="control-label">Салбар</label>
-                <input type="text" class="form-control" name="branchNo" id="branchNo" value="<?php if($data['method']=='edit') echo $data['staff']['branchNo']; else echo ''; ?>" required>
+                <select name="branchNo" id="branchNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("branch", "branchNo");
+                    foreach ($result as $item) {
+                    ?>
+                	<option value="<?php echo $item['branchNo']; ?>" <?php if($data['method']=='edit') if($data['staff']['branchNo'] == $item['branchNo']) echo 'selected'; ?>><?php echo $item['branchNo']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-inline">

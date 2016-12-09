@@ -53,15 +53,39 @@ if(isset($_POST['btn-save'])){
         <div class="row">
             <div class="col-md-6">
                 <label for="clientNo" class="control-label">Үйлчлүүлэгч</label>
-                <input type="text" class="form-control" name="clientNo" id="clientNo" value="<?php if($data['method']=='edit') echo $data['registration']['clientNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="clientNo" id="clientNo" value="--><?php //if($data['method']=='edit') echo $data['registration']['clientNo']; else echo ''; ?><!--" required>-->
+                <select name="clientNo" id="clientNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("client");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['clientNo']; ?>" <?php if($data['method']=='edit') if($data['registration']['clientNo'] == $item['clientNo']) echo 'selected'; ?>><?php echo $item['clientNo']." - ".$item['fName']." ".$item['lName']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="staffNo" class="control-label">Ажилтан</label>
-                <input type="text" class="form-control" name="staffNo" id="staffNo" value="<?php if($data['method']=='edit') echo $data['registration']['staffNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="staffNo" id="staffNo" value="--><?php //if($data['method']=='edit') echo $data['registration']['staffNo']; else echo ''; ?><!--" required>-->
+                <select name="staffNo" id="staffNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("staff");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['staffNo']; ?>" <?php if($data['method']=='edit') if($data['registration']['staffNo'] == $item['staffNo']) echo 'selected'; ?>><?php echo $item['staffNo']." - ".$item['fName']." ".$item['lName']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="branchNo" class="control-label">Салбар</label>
-                <input type="text" class="form-control" name="branchNo" id="branchNo" value="<?php if($data['method']=='edit') echo $data['registration']['branchNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="branchNo" id="branchNo" value="--><?php //if($data['method']=='edit') echo $data['registration']['branchNo']; else echo ''; ?><!--" required>-->
+                <select name="branchNo" id="branchNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("branch");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['branchNo']; ?>" <?php if($data['method']=='edit') if($data['registration']['branchNo'] == $item['branchNo']) echo 'selected'; ?>><?php echo $item['branchNo']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="dateJoined" class="control-label">Бүртгэгдсэн огноо</label>

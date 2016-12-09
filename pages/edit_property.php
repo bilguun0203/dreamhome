@@ -91,15 +91,38 @@ if(isset($_POST['btn-save'])){
             </div>
             <div class="col-md-6">
                 <label for="ownerNo" class="control-label">Эзэмшигч</label>
-                <input type="text" class="form-control" name="ownerNo" id="ownerNo" value="<?php if($data['method']=='edit') echo $data['property']['ownerNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="ownerNo" id="ownerNo" value="--><?php //if($data['method']=='edit') echo $data['property']['ownerNo']; else echo ''; ?><!--" required>-->
+                <select name="ownerNo" id="ownerNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("privateowner");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['ownerNo']; ?>" <?php if($data['method']=='edit') if($data['propertyforrent']['ownerNo'] == $item['ownerNo']) echo 'selected'; ?>><?php echo $item['ownerNo']." - ".$item['fName']." ".$item['lName']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="staffNo" class="control-label">Ажилтан</label>
-                <input type="text" class="form-control" name="staffNo" id="staffNo" value="<?php if($data['method']=='edit') echo $data['property']['staffNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="staffNo" id="staffNo" value="--><?php //if($data['method']=='edit') echo $data['property']['staffNo']; else echo ''; ?><!--" required>-->
+                <select name="staffNo" id="staffNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("staff");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['staffNo']; ?>" <?php if($data['method']=='edit') if($data['propertyforrent']['staffNo'] == $item['staffNo']) echo 'selected'; ?>><?php echo $item['staffNo']." - ".$item['fName']." ".$item['lName']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-6">
                 <label for="branchNo" class="control-label">Салбар</label>
-                <input type="text" class="form-control" name="branchNo" id="branchNo" value="<?php if($data['method']=='edit') echo $data['property']['branchNo']; else echo ''; ?>" required>
+                <select name="branchNo" id="branchNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("branch", "branchNo");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['branchNo']; ?>" <?php if($data['method']=='edit') if($data['propertyforrent']['branchNo'] == $item['branchNo']) echo 'selected'; ?>><?php echo $item['branchNo']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
         <hr>

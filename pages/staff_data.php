@@ -1,7 +1,6 @@
 <div class="container">
     <p>
-    <h1>Түрээсийн байр</h1>
-    <a href="?page=edit_property" class="btn btn-primary"><i class="fa fa-plus"></i> Нэмэх</a>
+    <h1><?php echo $data['staff']['staffNo']." ".$data['staff']['fName']." ".$data['staff']['lName']; ?> -н хариуцсан түрээсийн байр</h1>
     </p>
     <div class="table-responsive">
         <table class="table table-hover">
@@ -29,9 +28,9 @@
                     <td><?php echo $item['type']; ?></td>
                     <td><?php echo $item['rooms']; ?></td>
                     <td><?php echo $item['rent']; ?></td>
-                    <td><a href="?page=owner_data&id=<?php echo $item['ownerNo']; ?>"><?php
+                    <td><?php
                         $ow = $db->select("privateowner","*","ownerNo = '".$item['ownerNo']."'");
-                            echo $item['ownerNo'] . " " . $ow['lName'] . " " . $ow['fName']; ?></a>
+                        echo $item['ownerNo'] . " " . $ow['lName'] . " " . $ow['fName']; ?>
                     </td>
                     <td><?php
                         $st = $db->select("staff","*","staffNo = '".$item['staffNo']."'");
@@ -46,4 +45,5 @@
             </tbody>
         </table>
     </div>
+    <a href="?page=staff" class="btn btn-link btn-lg"><i class="fa fa-arrow-left"></i> Буцах</a>
 </div>

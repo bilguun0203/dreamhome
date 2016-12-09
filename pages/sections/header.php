@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,700italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/custom.js"></script>
 </head>
 <body>
 
@@ -18,12 +22,12 @@
     <a class="navbar-brand" href="#">DreamHome</a>
     <ul class="nav navbar-nav">
         <li <?php if($data['page'] == "home") { ?>class="active" <?php } ?>><a href="?page=home">Эхлэл</a></li>
-        <li <?php if($data['page'] == "branch") { ?>class="active" <?php } ?>><a href="?page=branch">Салбар</a></li>
+        <li <?php if($data['page'] == "branch" || $data['page'] == "branch_data") { ?>class="active" <?php } ?>><a href="?page=branch">Салбар</a></li>
         <li <?php if($data['page'] == "client") { ?>class="active" <?php } ?>><a href="?page=client">Үйлчлүүлэгч</a></li>
         <li <?php if($data['page'] == "privateowner") { ?>class="active" <?php } ?>><a href="?page=privateowner">Эзэмшигч</a></li>
         <li <?php if($data['page'] == "propertyforrent") { ?>class="active" <?php } ?>><a href="?page=propertyforrent">Түрээсийн байр</a></li>
         <li <?php if($data['page'] == "registration") { ?>class="active" <?php } ?>><a href="?page=registration">Бүртгэл</a></li>
-        <li <?php if($data['page'] == "staff") { ?>class="active" <?php } ?>><a href="?page=staff">Ажилтан</a></li>
+        <li <?php if($data['page'] == "staff" || $data['page'] == "staff_data") { ?>class="active" <?php } ?>><a href="?page=staff">Ажилтан</a></li>
         <li <?php if($data['page'] == "viewing") { ?>class="active" <?php } ?>><a href="?page=viewing">Сэтгэгдэл</a></li>
     </ul>
 </nav>

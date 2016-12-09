@@ -53,11 +53,27 @@ if(isset($_POST['btn-save'])){
         <div class="row">
             <div class="col-md-4">
                 <label for="clientNo" class="control-label">Үйлчлүүлэгч</label>
-                <input type="text" class="form-control" name="clientNo" id="clientNo" value="<?php if($data['method']=='edit') echo $data['viewing']['clientNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="clientNo" id="clientNo" value="--><?php //if($data['method']=='edit') echo $data['viewing']['clientNo']; else echo ''; ?><!--" required>-->
+                <select name="clientNo" id="clientNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("client");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['clientNo']; ?>" <?php if($data['method']=='edit') if($data['viewing']['clientNo'] == $item['clientNo']) echo 'selected'; ?>><?php echo $item['clientNo']." - ".$item['fName']." ".$item['lName']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="propertyNo" class="control-label">Түрээсийн байр</label>
-                <input type="text" class="form-control" name="propertyNo" id="propertyNo" value="<?php if($data['method']=='edit') echo $data['viewing']['propertyNo']; else echo ''; ?>" required>
+<!--                <input type="text" class="form-control" name="propertyNo" id="propertyNo" value="--><?php //if($data['method']=='edit') echo $data['viewing']['propertyNo']; else echo ''; ?><!--" required>-->
+                <select name="propertyNo" id="propertyNo" class="form-control" required>
+                    <?php
+                    $result = $db->select("propertyforrent");
+                    foreach ($result as $item) {
+                        ?>
+                        <option value="<?php echo $item['propertyNo']; ?>" <?php if($data['method']=='edit') if($data['viewing']['propertyNo'] == $item['propertyNo']) echo 'selected'; ?>><?php echo $item['propertyNo']; ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="viewDate" class="control-label">Үзсэн огноо</label>

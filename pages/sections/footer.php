@@ -1,7 +1,3 @@
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/bootstrap-datepicker.js"></script>
-<script src="assets/js/custom.js"></script>
 <script>
     if("<?php echo $page; ?>" == "edit_registration")
     {
@@ -19,6 +15,7 @@
     $(function () {
         $('.datepicker').datepicker({ format : 'yyyy-mm-dd' });
     });
+
 </script>
 </body>
 </html>

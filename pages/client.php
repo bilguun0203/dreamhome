@@ -18,7 +18,7 @@
             <tbody>
             <?php if($data['client'] != 0) foreach ($data['client'] as $item) { ?>
                 <tr>
-                    <td><?php echo $item['clientNo']; ?></td>
+                    <td><a href="?page=client_suggest&id=<?php echo $item['clientNo']; ?>"><?php echo $item['clientNo']; ?></a></td>
                     <td><?php echo $item['lName']; ?></td>
                     <td><?php echo $item['fName']; ?></td>
                     <td><?php echo $item['telNo']; ?></td>

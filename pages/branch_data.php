@@ -1,7 +1,6 @@
 <div class="container">
     <p>
-    <h1>Ажилтан</h1>
-    <a href="?page=edit_staff" class="btn btn-primary"><i class="fa fa-plus"></i> Нэмэх</a>
+    <h1><?php echo $data['branch']; ?> салбарын ажилтан</h1>
     </p>
     <div class="table-responsive">
         <table class="table table-hover">
@@ -20,7 +19,7 @@
             <tbody>
             <?php if($data['staff'] != 0) foreach ($data['staff'] as $item) { ?>
                 <tr>
-                    <td><a href="?page=staff_data&id=<?php echo $item['staffNo']; ?>"><?php echo $item['staffNo']; ?></a></td>
+                    <td><?php echo $item['staffNo']; ?></td>
                     <td><?php echo $item['lName']; ?></td>
                     <td><?php echo $item['fName']; ?></td>
                     <td><?php echo $item['position']; ?></td>
@@ -36,4 +35,5 @@
             </tbody>
         </table>
     </div>
+    <a href="?page=branch" class="btn btn-link btn-lg"><i class="fa fa-arrow-left"></i> Буцах</a>
 </div>

@@ -17,7 +17,7 @@
             <tbody>
                 <?php if($data['branch'] != 0) foreach ($data['branch'] as $item) { ?>
                 <tr>
-                    <td><?php echo $item['branchNo']; ?></td>
+                    <td><a href="?page=branch_data&id=<?php echo $item['branchNo']; ?>"><?php echo $item['branchNo']; ?></a></td>
                     <td><?php echo $item['street']; ?></td>
                     <td><?php echo $item['city']; ?></td>
                     <td><?php echo $item['postcode']; ?></td>

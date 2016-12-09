@@ -171,6 +171,73 @@ if(file_exists("pages/".$page.".php")) {
             $data['method'] = "add";
         }
     }
+    else if($page == "branch_data") {
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data['branch'] = $id;
+            $result = $db->select("staff", "*", "branchNo = '".$id."'");
+            if ($result != 0) {
+                if (is_array($result[0]))
+                    $data['staff'] = $result;
+                else $data['staff'][0] = $result;
+            } else {
+                $data['staff'] = 0;
+            }
+        }
+        else {
+            $page = "404";
+        }
+    }
+    else if($page == "staff_data") {
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data['staff'] = $db->select("staff", "*", "staffNo = '".$id."'");;
+            $result = $db->select("propertyforrent", "*", "staffNo = '".$id."'");
+            if ($result != 0) {
+                if (is_array($result[0]))
+                    $data['propertyforrent'] = $result;
+                else $data['propertyforrent'][0] = $result;
+            } else {
+                $data['propertyforrent'] = 0;
+            }
+        }
+        else {
+            $page = "404";
+        }
+    }
+    else if($page == "owner_data") {
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data['owner'] = $db->select("privateowner", "*", "ownerNo = '".$id."'");
+        }
+        else {
+            $page = "404";
+        }
+    }
+    else if($page == "client_suggest") {
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $data['client'] = $db->select("client", "*", "clientNo = '".$id."'");
+            $result = $db->select("propertyforrent","*", "rent <= '".$data['client']['maxRent']."'", "rent ASC");
+            if ($result != 0) {
+                if (is_array($result[0]))
+                    $data['propertyforrent'] = $result;
+                else $data['propertyforrent'][0] = $result;
+
+                foreach ($data['propertyforrent'] as $key => $item) {
+                    $data['propertyforrent'][$key]['owner'] = $db->select("privateowner", "*", "ownerNo = '".$item['ownerNo']."'");
+                }
+            } else {
+                $data['propertyforrent'] = 0;
+            }
+        }
+        else {
+            $page = "404";
+        }
+    }
+    else if($page == "names") {
+//        $data['names'] = $db->select("(SELECT fName, lName FROM client UNION SELECT fName, lName FROM staff UNION SELECT fName, lName FROM privateowner) sq", "*", "1", "sq.fName ASC, sq.lName ASC");
+    }
 }
 else {
     $page = "404";
